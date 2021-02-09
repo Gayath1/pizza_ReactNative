@@ -20,18 +20,18 @@ const Home = ({ navigation }) => {
     <Animated.View style={styles.container}>
     
         <Text style={styles.bigBlue}>Welcome Pizza Mania!</Text>
-        
+        <Image style={styles.Image} source={require('../Images/pizza_home.png')}/>
         <TouchableOpacity style={styles.btn} onPress={() =>
         navigation.navigate('Sign' )
       }>
         <Text style={styles.txtbtn} >Sign Up</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.btn} onPress={() =>
+        <TouchableOpacity style={styles.btn1} onPress={() =>
         navigation.navigate('Login' )
       }>
         <Text style={styles.txtbtn} >Login</Text>
         </TouchableOpacity>
-        <Image style={styles.Image} source={require('../Images/pizza_home.png')}/>
+        
     
     </Animated.View>
     
@@ -54,8 +54,20 @@ const styles = StyleSheet.create({
         elevation: 10,
         backgroundColor:'#FFFFFF',
         borderRadius: 10,
-        marginTop:50
+        marginTop:30,
+        marginBottom:30
     },
+    btn1:{
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 3 },
+      shadowOpacity: 0.29,
+      shadowRadius: 4.65,  
+      elevation: 10,
+      backgroundColor:'#FFFFFF',
+      borderRadius: 10,
+      marginTop:20,
+      marginBottom:40
+  },
     txtbtn:{
         
         textAlign:'center',
@@ -81,7 +93,7 @@ const styles = StyleSheet.create({
       color: 'black',
       fontFamily: 'notoserif',
       fontWeight: 'bold',
-      fontSize: 20,
+      fontSize: 30,
     },
     red: {
       color: 'red',
