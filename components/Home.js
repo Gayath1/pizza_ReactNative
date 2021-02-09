@@ -1,11 +1,23 @@
-import React from 'react';
-import {StyleSheet, Text, View, Image,Button, TouchableOpacity} from 'react-native';
+import React, { useState  } from 'react';
+import {StyleSheet, Text, View, Image,Button, TouchableOpacity, Animated} from 'react-native';
 import * as Font from 'expo-font';
 
+
 const Home = () => {
+  const [fadeAnim] = useState(new Animated.Value(0));
+
+  React.useEffect(() => {
+    Animated.timing(fadeAnim, {
+      toValue: 1,
+      duration: 1000,
+      useNativeDriver: true
+    }).start();
+  }, []);
     
   return (
-    <View style={styles.container}>
+    
+    <Animated.View style={styles.container}>
+    
         <Text style={styles.bigBlue}>Welcome Pizza Mania!</Text>
         
         <TouchableOpacity style={styles.btn}>
@@ -15,7 +27,9 @@ const Home = () => {
         <Text style={styles.txtbtn} >Login</Text>
         </TouchableOpacity>
         <Image style={styles.Image} source={require('../Images/pizza_home.png')}/>
-    </View>
+    
+    </Animated.View>
+    
          );
 };
 
