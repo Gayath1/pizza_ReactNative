@@ -1,10 +1,9 @@
 import React, { useState  } from 'react';
 import {StyleSheet, Text, View, Image,Button, TouchableOpacity, Animated} from 'react-native';
 import * as Font from 'expo-font';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
 
-const Home = ({ navigation }) => {
+
+const Login = () => {
   const [fadeAnim] = useState(new Animated.Value(0));
 
   React.useEffect(() => {
@@ -19,25 +18,18 @@ const Home = ({ navigation }) => {
     
     <Animated.View style={styles.container}>
     
-        <Text style={styles.bigBlue}>Welcome Pizza Mania!</Text>
+        <Text style={styles.bigBlue}>Login!</Text>
         
-        <TouchableOpacity style={styles.btn} onPress={() =>
-        navigation.navigate('Sign' )
-      }>
-        <Text style={styles.txtbtn} >Sign Up</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.btn} onPress={() =>
-        navigation.navigate('Login' )
-      }>
+        
+        <TouchableOpacity style={styles.btn}>
         <Text style={styles.txtbtn} >Login</Text>
         </TouchableOpacity>
-        <Image style={styles.Image} source={require('../Images/pizza_home.png')}/>
+        
     
     </Animated.View>
     
          );
 };
-
 
 const styles = StyleSheet.create({
     container: {
@@ -70,12 +62,7 @@ const styles = StyleSheet.create({
         
 },
     
-    Image:{
-        flex: 1,
-        width: 200,
-        height: 100,
-        resizeMode: 'contain'
-    },
+    
     bigBlue: {
         
       color: 'black',
@@ -88,4 +75,4 @@ const styles = StyleSheet.create({
     },
   });
   
-export default Home;
+export default Login;
