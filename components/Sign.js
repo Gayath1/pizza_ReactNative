@@ -1,7 +1,7 @@
 // components/signup.js
 
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator, TouchableOpacity } from 'react-native';
 import firebase from '../database/firebase';
 
 
@@ -80,11 +80,12 @@ export default class Signup extends Component {
           maxLength={20}
           secureTextEntry={true}
         />   
-        <Button
-          color="#3740FE"
-          title="Signup"
-          onPress={() => this.registerUser()}
-        />
+        
+        <TouchableOpacity style={styles.btn1} onPress={() =>
+        this.registerUser()
+      }>
+        <Text style={styles.txtbtn} >Signup</Text>
+        </TouchableOpacity>
 
         <Text 
           style={styles.loginText}
@@ -127,5 +128,26 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#fff'
-  }
+  },
+  btn1:{
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.29,
+    shadowRadius: 4.65,  
+    elevation: 10,
+    backgroundColor:'#FFFFFF',
+    borderRadius: 5,
+    marginTop:20,
+    marginBottom:40,
+    
+},
+  txtbtn:{
+    textAlignVertical: 'center',
+    textAlign:'center',
+    color: '#000000',
+    borderRadius:10,
+    fontSize:20,
+    fontWeight: 'bold',
+    height:40
+}
 });

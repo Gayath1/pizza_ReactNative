@@ -105,9 +105,6 @@ const styles = StyleSheet.create({
     borderColor: "#ccc",
     borderBottomWidth: 1
   },
-  btn:{
-    color:"#3740FE"
-  },
   loginText: {
     color: '#3740FE',
     marginTop: 25,
