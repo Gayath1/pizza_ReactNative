@@ -67,7 +67,7 @@ export default class Login extends Component {
           placeholder="Password"
           value={this.state.password}
           onChangeText={(val) => this.updateInputVal(val, 'password')}
-          maxLength={15}
+          maxLength={20}
           secureTextEntry={true}
         />   
         <Button
