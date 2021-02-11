@@ -1,5 +1,5 @@
 import React, { Component, useState, useEffect } from 'react';
-import { StyleSheet, View, Text, Button, TouchableOpacity, NoteCard } from 'react-native';
+import { StyleSheet, View, Text, Button, TouchableOpacity, NoteCard, FlatList } from 'react-native';
 import firebase from '../database/firebase';
 export default class store extends React.Component {
   state={
@@ -18,7 +18,7 @@ export default class store extends React.Component {
   render() {
      console.log(this.state)
     
-
+     
 
   
 
@@ -28,9 +28,14 @@ export default class store extends React.Component {
           Hello, {this.state.displayName}
         </Text>
         
-
+       
+        {this.state.lists.map((current, i) => (
+                        <Text>{current.name}</Text>
+                    ))}
+          
        
       </View>
+      
     );
   
   }
