@@ -1,6 +1,8 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { Component, useState, useEffect, Fragment } from 'react';
 import { StyleSheet, View, Text, Button, TouchableOpacity, NoteCard, FlatList } from 'react-native';
 import firebase from '../database/firebase';
+
+
 export default class store extends React.Component {
   state={
     uid:firebase.auth().currentUser.uid,
@@ -23,17 +25,20 @@ export default class store extends React.Component {
   
 
     return (
-      <View style={styles.container}>
-        <Text style = {styles.textStyle}>
-          Hello, {this.state.displayName}
-        </Text>
-        
-       
+      
+      <View style={styles.container}> 
+      
         {this.state.lists.map((current, i) => (
-                        <Text>{current.name}</Text>
+          <Fragment>
+            <View style={styles.card}>
+                <Text  style={styles.txt} key={i}>{current.name}</Text>
+                <Text style={styles.txt} key={i}>LKR.{current.price}</Text>
+            </View>
+           </Fragment>
                     ))}
-          
-       
+       <Text></Text>
+       <Text></Text>
+ 
       </View>
       
     );
@@ -45,17 +50,23 @@ export default class store extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    display: "flex",
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 35,
-    backgroundColor: '#fff'
+    flexDirection:'row',
+    
+    backgroundColor: '#fff',
+    
+    
+    
+    
+    
   },
   textStyle: {
     fontSize: 15,
     marginBottom: 20
   },
-    btn1:{
+    card:{
+      flex: 1, 
+      margin:10,
+      justifyContent: "center",
       shadowColor: '#000',
       shadowOffset: { width: 0, height: 3 },
       shadowOpacity: 0.29,
@@ -63,18 +74,15 @@ const styles = StyleSheet.create({
       elevation: 10,
       backgroundColor:'#FFFFFF',
       borderRadius: 10,
-      marginTop:20,
-      marginBottom:40
+      height:'30%',
+      width: '25%',
 },
-  txtbtn:{
+  txt:{
       
       textAlign:'center',
-      padding:10,
-      margin:5,
+      textAlignVertical:'center',
       color: '#000000',
       borderRadius:10,
-      width: 120,
-      height: 50,
       fontSize:20,
       fontWeight: 'bold'
       
