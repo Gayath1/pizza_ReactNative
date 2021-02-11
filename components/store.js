@@ -1,10 +1,8 @@
-// components/dashboard.js
-
 import React, { Component } from 'react';
 import { StyleSheet, View, Text, Button, TouchableOpacity } from 'react-native';
 import firebase from '../database/firebase';
 
-export default class Dashboard extends Component {
+export default class store extends Component {
   constructor() {
     super();
     this.state = { 
@@ -12,12 +10,7 @@ export default class Dashboard extends Component {
     }
   }
 
-  signOut = () => {
-    firebase.auth().signOut().then(() => {
-      this.props.navigation.navigate('Login')
-    })
-    .catch(error => this.setState({ errorMessage: error.message }))
-  }  
+  
 
   render() {
     this.state = { 
@@ -34,10 +27,7 @@ export default class Dashboard extends Component {
       }>
         <Text style={styles.txtbtn} >Store</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.btn1} onPress={() => this.signOut()}
-      >
-        <Text style={styles.txtbtn} >Logout</Text>
-        </TouchableOpacity>
+
         
       </View>
     );

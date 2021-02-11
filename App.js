@@ -8,6 +8,7 @@ import Home from './components/Home';
 import Login from './components/Login';
 import Sign from './components/Sign';
 import Dashboard from './components/dashboard';
+import store from './components/store';
 
 const Stack = createStackNavigator();
 
@@ -19,6 +20,7 @@ export default function App() {
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Sign" component={Sign} />
         <Stack.Screen name="Dashboard" component={Dashboard} />
+        <Stack.Screen name="store" component={store} />
       </Stack.Navigator>
     </NavigationContainer>
   );
