@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
-import { StyleSheet, View, Text, Button, TouchableOpacity } from 'react-native';
+import React, { Component, useState, useEffect } from 'react';
+import { StyleSheet, View, Text, Button, TouchableOpacity, NoteCard } from 'react-native';
 import firebase from '../database/firebase';
-
 export default class store extends Component {
   constructor() {
     super();
@@ -9,29 +8,35 @@ export default class store extends Component {
       uid: ''
     }
   }
-
-  
+    
 
   render() {
     this.state = { 
       displayName: firebase.auth().currentUser.displayName,
       uid: firebase.auth().currentUser.uid
+      
     }    
+    
+
+    var recentPostsRef = firebase.database().ref('/store');
+recentPostsRef.once('value').then(snapshot => {
+    console.log(snapshot.val());
+ 
+})
+    
     return (
       <View style={styles.container}>
         <Text style = {styles.textStyle}>
           Hello, {this.state.displayName}
         </Text>
-        <TouchableOpacity style={styles.btn1} onPress={() =>
-        this.props.navigation.navigate('store' )
-      }>
-        <Text style={styles.txtbtn} >Store</Text>
-        </TouchableOpacity>
-
         
+
+       
       </View>
     );
+  
   }
+
 }
 
 const styles = StyleSheet.create({
