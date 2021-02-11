@@ -1,5 +1,5 @@
 import React, { Component, useState, useEffect, Fragment } from 'react';
-import { StyleSheet, View, Text, Button, TouchableOpacity, NoteCard, FlatList } from 'react-native';
+import { StyleSheet, View, Text, Button, TouchableOpacity, Image } from 'react-native';
 import firebase from '../database/firebase';
 
 
@@ -30,15 +30,16 @@ export default class store extends React.Component {
       
         {this.state.lists.map((current, i) => (
           <Fragment>
-            <View style={styles.card}>
+            <TouchableOpacity style={styles.card}>
+                <Image style={styles.img} source={{uri: current.imageUrl}}/>
                 <Text  style={styles.txt} key={i}>{current.name}</Text>
-                <Text style={styles.txt} key={i}>LKR.{current.price}</Text>
-            </View>
+                <Text  style={styles.txt} key={1}>{current.size}</Text>
+                <Text style={styles.txt} key={2}>LKR.{current.price}</Text>
+            </TouchableOpacity>
            </Fragment>
                     ))}
-       <Text></Text>
-       <Text></Text>
- 
+                    
+                           
       </View>
       
     );
@@ -53,10 +54,6 @@ const styles = StyleSheet.create({
     flexDirection:'row',
     
     backgroundColor: '#fff',
-    
-    
-    
-    
     
   },
   textStyle: {
@@ -86,5 +83,12 @@ const styles = StyleSheet.create({
       fontSize:20,
       fontWeight: 'bold'
       
-}
+},
+ img:{
+  
+  
+   resizeMode: "center",
+   height:'40%',
+   width:'100%'
+ }
 });
