@@ -17,6 +17,11 @@ export default class store extends React.Component {
         })
     }
 
+    details = (id) => {
+      
+      this.props.navigation.navigate('details', {id: id})
+    }
+
   render() {
      console.log(this.state)
     
@@ -30,7 +35,7 @@ export default class store extends React.Component {
       
         {this.state.lists.map((current, i) => (
           <Fragment>
-            <TouchableOpacity style={styles.card}>
+            <TouchableOpacity style={styles.card}  onPress={() => this.details(current.id)}>
                 <Image style={styles.img} source={{uri: current.imageUrl}}/>
                 <Text  style={styles.txt} key={i}>{current.name}</Text>
                 <Text  style={styles.txt} key={1}>{current.size}</Text>
