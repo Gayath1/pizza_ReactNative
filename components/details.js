@@ -12,14 +12,14 @@ export  class details extends React.Component {
     state={
         uid:firebase.auth().currentUser.uid,
         displayName: firebase.auth().currentUser.displayName,
+        id: this.props.route.params.id,
         lists:[],
-        id: this.props.route.params.id
       }
       
     
       
         componentDidMount(){
-            const recentPostsRef = firebase.database().ref('/store' + this.state.id);
+            const recentPostsRef = firebase.database().ref('/store/' + this.state.id );
             recentPostsRef.once('value').then(snapshot => {
                 this.setState({lists : Object.values(snapshot.val()) })
                 
@@ -28,21 +28,17 @@ export  class details extends React.Component {
         }
    
     render(){
+        console.log(this.state)
         
-        console.log(this.state.id);
     return (
     
-    <Animated.View style={styles.container}>
+    <View style={styles.container}>
     
         
-        
-        
-        <Text style={styles.txtbtn} >{this.state.id}</Text>
-       
-        
-        
+                  
+          
     
-    </Animated.View>
+    </View>
     
          );
 };
@@ -50,63 +46,47 @@ export  class details extends React.Component {
 }
 const styles = StyleSheet.create({
     container: {
-        alignItems: 'center',
         flex: 1,
+        flexDirection:'row',
         
+        backgroundColor: '#fff',
+        
+      },
+      textStyle: {
+        fontSize: 15,
+        marginBottom: 20
+      },
+        card:{
+          flex: 1, 
+          margin:10,
+          justifyContent: "center",
+          shadowColor: '#000',
+          shadowOffset: { width: 0, height: 3 },
+          shadowOpacity: 0.29,
+          shadowRadius: 4.65,  
+          elevation: 10,
+          backgroundColor:'#FFFFFF',
+          borderRadius: 10,
+          height:'30%',
+          width: '25%',
+    },
+      txt:{
+          
+          textAlign:'center',
+          textAlignVertical:'center',
+          color: '#000000',
+          borderRadius:10,
+          fontSize:20,
+          fontWeight: 'bold'
+          
+    },
+     img:{
       
-    },
-    btn:{
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 3 },
-        shadowOpacity: 0.29,
-        shadowRadius: 4.65,  
-        elevation: 10,
-        backgroundColor:'#FFFFFF',
-        borderRadius: 10,
-        marginTop:30,
-        marginBottom:30
-    },
-    btn1:{
-      shadowColor: '#000',
-      shadowOffset: { width: 0, height: 3 },
-      shadowOpacity: 0.29,
-      shadowRadius: 4.65,  
-      elevation: 10,
-      backgroundColor:'#FFFFFF',
-      borderRadius: 10,
-      marginTop:20,
-      marginBottom:40
-  },
-    txtbtn:{
-        
-        textAlign:'center',
-        padding:10,
-        margin:5,
-        color: '#000000',
-        borderRadius:10,
-        width: 120,
-        height: 50,
-        fontSize:20,
-        fontWeight: 'bold'
-        
-},
-    
-    Image:{
-        flex: 1,
-        width: 200,
-        height: 100,
-        resizeMode: 'contain'
-    },
-    bigBlue: {
-        
-      color: 'black',
-      fontFamily: 'notoserif',
-      fontWeight: 'bold',
-      fontSize: 30,
-    },
-    red: {
-      color: 'red',
-    },
+      
+       resizeMode: "center",
+       height:'40%',
+       width:'100%'
+     }
   });
   
 export default details;

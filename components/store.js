@@ -23,7 +23,7 @@ export default class store extends React.Component {
     }
 
   render() {
-     console.log(this.state)
+     
     
      
 
