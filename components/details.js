@@ -30,7 +30,7 @@ export  class details extends React.Component {
 
         addtocart = () => {
             
-            firebase.database().ref('/cart/').set({
+            firebase.database().ref('/cart/').push({
               uid: this.state.uid,
               list: this.state.lists,
               
