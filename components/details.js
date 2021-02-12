@@ -19,7 +19,7 @@ export  class details extends React.Component {
     
       
         componentDidMount(){
-            const recentPostsRef = firebase.database().ref('/store/' + this.state.id );
+            const recentPostsRef = firebase.database().ref('/store/').orderByChild('id').equalTo(this.state.id);
             recentPostsRef.once('value').then(snapshot => {
                 this.setState({lists : Object.values(snapshot.val()) })
                 
@@ -28,11 +28,21 @@ export  class details extends React.Component {
         }
    
     render(){
-        console.log(this.state)
+        console.log(this.state.lists)
         
     return (
     
     <View style={styles.container}>
+    {this.state.lists.map((current, i) => (
+          <Fragment>
+            <TouchableOpacity style={styles.card}>
+                <Image style={styles.img} source={{uri: current.imageUrl}}/>
+                <Text  style={styles.txt} key={i}>{current.name}</Text>
+                <Text  style={styles.txt} key={1}>{current.size}</Text>
+                <Text style={styles.txt} key={2}>LKR.{current.price}</Text>
+            </TouchableOpacity>
+           </Fragment>
+                    ))}
     
         
                   
