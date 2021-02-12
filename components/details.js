@@ -71,10 +71,12 @@ export  class details extends React.Component {
 
                 {this.state.flashMessage==true?
           <View style={styles.flashMessage}>
-          <Text style={{color:'white'}}>Added to the cart</Text>
+          <Text style={styles.txtbtn}>Added to the cart</Text>
         </View>
         :
-        null
+        <View style={styles.flashMessage1}>
+        <Text style={styles.txtbtn}></Text>
+        </View>
         }
             </View>
            </Fragment>
@@ -155,14 +157,21 @@ const styles = StyleSheet.create({
       height:40
   },
   flashMessage:{
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 3 },
+      shadowOpacity: 0.29,
+      shadowRadius: 4.65,  
+      elevation: 10,
+      backgroundColor:'#16c79a',
+      borderRadius: 5,
+      margin:20,
     
-    backgroundColor:'green', 
-    width:'100%', 
-    justifyContent:'center', 
-    alignItems:'center',           
+  },
+  flashMessage1:{
     
-    
-  }
+    margin:20,
+  
+}
   });
   
 export default details;
