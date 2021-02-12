@@ -14,6 +14,7 @@ export  class details extends React.Component {
         displayName: firebase.auth().currentUser.displayName,
         id: this.props.route.params.id,
         lists:[],
+        flashMessage: false
       }
       
     
@@ -26,6 +27,29 @@ export  class details extends React.Component {
                 
             })
         }
+
+        addtocart = () => {
+            
+            firebase.database().ref('/cart/').set({
+              uid: this.state.uid,
+              list: this.state.lists,
+              
+            }).then((res) => {
+        
+              console.log('Add to cart!')
+              this.setState({
+                flashMessage: true
+              },()=>{setTimeout(() => this.closeFlashMessage(), 3000)})
+              
+            })
+            .catch(error => this.setState({ errorMessage: error.message }))
+          
+        }
+        closeFlashMessage(){
+          this.setState({
+            flashMessage: false
+          })
+        }
    
     render(){
         console.log(this.state.lists)
@@ -35,17 +59,29 @@ export  class details extends React.Component {
     <View style={styles.container}>
     {this.state.lists.map((current, i) => (
           <Fragment>
-            <TouchableOpacity style={styles.card}>
+            <View style={styles.card}>
                 <Image style={styles.img} source={{uri: current.imageUrl}}/>
                 <Text  style={styles.txt} key={i}>{current.name}</Text>
                 <Text  style={styles.txt} key={1}>{current.size}</Text>
                 <Text style={styles.txt} key={2}>LKR.{current.price}</Text>
-            </TouchableOpacity>
+
+                <TouchableOpacity style={styles.btn1} onPress={() =>this.addtocart()}>
+                  <Text style={styles.txtbtn} >Add to cart</Text>
+                </TouchableOpacity>
+
+                {this.state.flashMessage==true?
+          <View style={styles.flashMessage}>
+          <Text style={{color:'white'}}>Added to the cart</Text>
+        </View>
+        :
+        null
+        }
+            </View>
            </Fragment>
                     ))}
     
         
-                  
+                    
           
     
     </View>
@@ -57,7 +93,7 @@ export  class details extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        flexDirection:'row',
+        
         
         backgroundColor: '#fff',
         
@@ -78,7 +114,7 @@ const styles = StyleSheet.create({
           backgroundColor:'#FFFFFF',
           borderRadius: 10,
           height:'30%',
-          width: '25%',
+          width: '95%',
     },
       txt:{
           
@@ -96,7 +132,37 @@ const styles = StyleSheet.create({
        resizeMode: "center",
        height:'40%',
        width:'100%'
-     }
+     },
+     btn1:{
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 3 },
+      shadowOpacity: 0.29,
+      shadowRadius: 4.65,  
+      elevation: 10,
+      backgroundColor:'#FFFFFF',
+      borderRadius: 5,
+      margin:20,
+      
+      
+  },
+    txtbtn:{
+      textAlignVertical: 'center',
+      textAlign:'center',
+      color: '#000000',
+      borderRadius:10,
+      fontSize:20,
+      fontWeight: 'bold',
+      height:40
+  },
+  flashMessage:{
+    
+    backgroundColor:'green', 
+    width:'100%', 
+    justifyContent:'center', 
+    alignItems:'center',           
+    
+    
+  }
   });
   
 export default details;
