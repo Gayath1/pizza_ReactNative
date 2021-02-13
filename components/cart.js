@@ -30,11 +30,11 @@ export  class cart extends React.Component {
 
         remove = (id) => {
             
-            firebase.database().ref('/cart/'+ firebase.auth().currentUser.uid).remove().then((res) => {
+            firebase.database().ref('/cart/' + firebase.auth().currentUser.uid).remove().then((res) => {
         
               console.log('Removed!')
-              ToastAndroid.show("Item removed !", ToastAndroid.SHORT);
-              
+              ToastAndroid.show("Cart Clear !", ToastAndroid.LONG);
+              this.props.navigation.navigate('store')
             })
             .catch(error => this.setState({ errorMessage: error.message }))
           
@@ -65,7 +65,7 @@ export  class cart extends React.Component {
            </Fragment>
                     ))}
     
-                    <TouchableOpacity style={styles.btn1} onPress={() =>this.remove(current.randomid)}>
+                    <TouchableOpacity style={styles.btn1} onPress={() =>this.remove()}>
                   <Text style={styles.txtbtn} >Remove</Text>
                 </TouchableOpacity>
                     
