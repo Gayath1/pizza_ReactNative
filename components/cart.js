@@ -1,44 +1,40 @@
 import React, { Component, useState, useEffect, Fragment } from 'react';
-import {StyleSheet, Text, View, Image,Button, TouchableOpacity, Animated} from 'react-native';
+import {StyleSheet, Text, View, Image,Button, TouchableOpacity, ToastAndroid} from 'react-native';
 import * as Font from 'expo-font';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import firebase from '../database/firebase';
 
 
-export  class details extends React.Component {
+export  class cart extends React.Component {
 
     
     state={
         uid:firebase.auth().currentUser.uid,
-        displayName: firebase.auth().currentUser.displayName,
-        id: this.props.route.params.id,
+        displayName: firebase.auth().currentUser.displayName, 
         lists:[],
-        flashMessage: false
+        flashMessage: false,
+        cartid:""
       }
-
+      
+    
       
         componentDidMount(){
-            const recentPostsRef = firebase.database().ref('/store/').orderByChild('id').equalTo(this.state.id);
+            const recentPostsRef = firebase.database().ref('/cart').orderByChild('uid').equalTo(this.state.uid);
             recentPostsRef.once('value').then(snapshot => {
-                this.setState({lists : Object.values(snapshot.val()) })
+                this.setState({lists: Object.values(snapshot.val()) } )
                 
                 
             })
         }
 
-        addtocart = () => {
+        remove = () => {
             
-            firebase.database().ref('/cart/').push({
-              uid: this.state.uid,
-              lists: this.state.lists,
-              
+            firebase.database().ref('/cart/').orderByChild('id').equalTo(this.state.cartid).remove({  
             }).then((res) => {
         
               console.log('Add to cart!')
-              this.setState({
-                flashMessage: true
-              },()=>{setTimeout(() => this.closeFlashMessage(), 3000)})
+              ToastAndroid.show("Item removed !", ToastAndroid.SHORT);
               
             })
             .catch(error => this.setState({ errorMessage: error.message }))
@@ -51,32 +47,24 @@ export  class details extends React.Component {
         }
    
     render(){
-        
+        console.log(this.state.lists)
         
     return (
     
     <View style={styles.container}>
-    {this.state.lists.map((current, i) => (
+    {this.state.lists.map((current, lists) => (
           <Fragment>
             <View style={styles.card}>
-                <Image style={styles.img} source={{uri: current.imageUrl}}/>
-                <Text  style={styles.txt} key={i}>{current.name}</Text>
-                <Text  style={styles.txt} key={1}>{current.size}</Text>
-                <Text style={styles.txt} key={2}>LKR.{current.price}</Text>
+                <Image style={styles.img} source={{uri: current.lists[0].imageUrl}}/>
+                <Text  style={styles.txt} key={lists}>{current.lists[0].name}</Text>
+                <Text  style={styles.txt} key={lists}>{current.lists[0].size}</Text>
+                <Text style={styles.txt} key={lists}>LKR.{current.lists[0].price}</Text>
 
-                <TouchableOpacity style={styles.btn1} onPress={() =>this.addtocart()}>
-                  <Text style={styles.txtbtn} >Add to cart</Text>
+                <TouchableOpacity style={styles.btn1} onPress={() =>this.remove({cartid: id})}>
+                  <Text style={styles.txtbtn} >Remove</Text>
                 </TouchableOpacity>
 
-                {this.state.flashMessage==true?
-          <View style={styles.flashMessage}>
-          <Text style={styles.txtbtn}>Added to the cart</Text>
-        </View>
-        :
-        <View style={styles.flashMessage1}>
-        <Text style={styles.txtbtn}></Text>
-        </View>
-        }
+            
             </View>
            </Fragment>
                     ))}
@@ -173,4 +161,4 @@ const styles = StyleSheet.create({
 }
   });
   
-export default details;
+export default cart;

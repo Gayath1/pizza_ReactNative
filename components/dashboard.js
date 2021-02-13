@@ -34,6 +34,11 @@ export default class Dashboard extends Component {
       }>
         <Text style={styles.txtbtn} >Store</Text>
         </TouchableOpacity>
+        <TouchableOpacity style={styles.btn1} onPress={() =>
+        this.props.navigation.navigate('cart' )
+      }>
+        <Text style={styles.txtbtn} >Cart</Text>
+        </TouchableOpacity>
         <TouchableOpacity style={styles.btn1} onPress={() => this.signOut()}
       >
         <Text style={styles.txtbtn} >Logout</Text>
