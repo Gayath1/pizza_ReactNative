@@ -40,7 +40,9 @@ export  class cart extends React.Component {
           
         }
         
-   
+   order = (lists) => {
+        this.props.navigation.navigate('orderplace', {lists: lists})
+   }
         
     render(){
         
@@ -67,6 +69,9 @@ export  class cart extends React.Component {
     
                     <TouchableOpacity style={styles.btn1} onPress={() =>this.remove()}>
                   <Text style={styles.txtbtn} >Remove</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={styles.btn1} onPress={() =>this.order(this.state.lists)}>
+                  <Text style={styles.txtbtn} >Place order</Text>
                 </TouchableOpacity>
                     
           
