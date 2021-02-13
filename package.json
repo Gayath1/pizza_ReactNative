@@ -29,6 +29,8 @@
     "react-native-screens": "~2.15.2",
     "react-native-simple-animations": "^0.2.3",
     "react-native-unimodules": "~0.12.0",
+    "react-native-unique-id": "^2.0.0",
+    "react-native-uuid": "^1.4.9",
     "react-native-web": "~0.13.12"
   },
   "devDependencies": {

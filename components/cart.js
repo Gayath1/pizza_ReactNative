@@ -1,5 +1,5 @@
 import React, { Component, useState, useEffect, Fragment } from 'react';
-import {StyleSheet, Text, View, Image,Button, TouchableOpacity, ToastAndroid} from 'react-native';
+import {StyleSheet, Text, View, Image,Button,SafeAreaView,StatusBar, TouchableOpacity, ToastAndroid,  ScrollView} from 'react-native';
 import * as Font from 'expo-font';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -14,13 +14,13 @@ export  class cart extends React.Component {
         displayName: firebase.auth().currentUser.displayName, 
         lists:[],
         flashMessage: false,
-        cartid:""
+        randomid:''
       }
       
     
       
         componentDidMount(){
-            const recentPostsRef = firebase.database().ref('/cart').orderByChild('uid').equalTo(this.state.uid);
+            const recentPostsRef = firebase.database().ref('/cart/' + firebase.auth().currentUser.uid);
             recentPostsRef.once('value').then(snapshot => {
                 this.setState({lists: Object.values(snapshot.val()) } )
                 
@@ -28,30 +28,27 @@ export  class cart extends React.Component {
             })
         }
 
-        remove = () => {
+        remove = (id) => {
             
-            firebase.database().ref('/cart/').orderByChild('id').equalTo(this.state.cartid).remove({  
-            }).then((res) => {
+            firebase.database().ref('/cart/'+ firebase.auth().currentUser.uid).remove().then((res) => {
         
-              console.log('Add to cart!')
+              console.log('Removed!')
               ToastAndroid.show("Item removed !", ToastAndroid.SHORT);
               
             })
             .catch(error => this.setState({ errorMessage: error.message }))
           
         }
-        closeFlashMessage(){
-          this.setState({
-            flashMessage: false
-          })
-        }
+        
    
+        
     render(){
-        console.log(this.state.lists)
+        
         
     return (
     
     <View style={styles.container}>
+    
     {this.state.lists.map((current, lists) => (
           <Fragment>
             <View style={styles.card}>
@@ -59,17 +56,18 @@ export  class cart extends React.Component {
                 <Text  style={styles.txt} key={lists}>{current.lists[0].name}</Text>
                 <Text  style={styles.txt} key={lists}>{current.lists[0].size}</Text>
                 <Text style={styles.txt} key={lists}>LKR.{current.lists[0].price}</Text>
+                
 
-                <TouchableOpacity style={styles.btn1} onPress={() =>this.remove({cartid: id})}>
-                  <Text style={styles.txtbtn} >Remove</Text>
-                </TouchableOpacity>
+                
 
             
             </View>
            </Fragment>
                     ))}
     
-        
+                    <TouchableOpacity style={styles.btn1} onPress={() =>this.remove(current.randomid)}>
+                  <Text style={styles.txtbtn} >Remove</Text>
+                </TouchableOpacity>
                     
           
     
@@ -81,12 +79,12 @@ export  class cart extends React.Component {
 }
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        
-        
+        flex: 1, 
         backgroundColor: '#fff',
         
+        
       },
+      
       textStyle: {
         fontSize: 15,
         marginBottom: 20

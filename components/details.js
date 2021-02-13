@@ -4,7 +4,7 @@ import * as Font from 'expo-font';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import firebase from '../database/firebase';
-
+var uuid = require('react-native-uuid');
 
 export  class details extends React.Component {
 
@@ -29,8 +29,8 @@ export  class details extends React.Component {
 
         addtocart = () => {
             
-            firebase.database().ref('/cart/').push({
-              uid: this.state.uid,
+            firebase.database().ref('/cart/' + firebase.auth().currentUser.uid).push({
+              randomid: uuid.v4(),
               lists: this.state.lists,
               
             }).then((res) => {
