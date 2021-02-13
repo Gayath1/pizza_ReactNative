@@ -30,6 +30,8 @@ export default class orderplace extends React.Component {
         lists: this.state.lists,
         
       })
+      firebase.database().ref('/cart/' + firebase.auth().currentUser.uid).remove()
+      
       .then((res) => {
         
         console.log('order placed!')
