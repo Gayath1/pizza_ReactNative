@@ -118,7 +118,8 @@ const styles = StyleSheet.create({
   loginText: {
     color: '#3740FE',
     marginTop: 25,
-    textAlign: 'center'
+    textAlign: 'center',
+    fontSize: 30,
   },
   preloader: {
     left: 0,
