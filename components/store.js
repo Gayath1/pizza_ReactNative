@@ -1,5 +1,5 @@
 import React, { Component, useState, useEffect, Fragment } from 'react';
-import { StyleSheet, View, Text, Button, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, View, Text, Button, TouchableOpacity, Image,SafeAreaView,ScrollView, FlatList } from 'react-native';
 import firebase from '../database/firebase';
 
 
@@ -31,7 +31,8 @@ export default class store extends React.Component {
 
     return (
       
-      <View style={styles.container}> 
+      <SafeAreaView style={styles.container}> 
+      <ScrollView style={styles.scrollView}>
       
         {this.state.lists.map((current, i) => (
           <Fragment>
@@ -43,9 +44,9 @@ export default class store extends React.Component {
             </TouchableOpacity>
            </Fragment>
                     ))}
-                    
-                           
-      </View>
+                                   
+      </ScrollView>                   
+      </SafeAreaView>
       
     );
   
@@ -56,10 +57,16 @@ export default class store extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection:'row',
+    padding: 0,
+    
+    
+    
+  },
+  scrollView: {
+    
     
     backgroundColor: '#fff',
-    
+    padding: 0,
   },
   textStyle: {
     fontSize: 15,
@@ -76,8 +83,8 @@ const styles = StyleSheet.create({
       elevation: 10,
       backgroundColor:'#FFFFFF',
       borderRadius: 10,
-      height:'30%',
-      width: '25%',
+      height:200,
+      
 },
   txt:{
       

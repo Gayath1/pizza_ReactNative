@@ -49,7 +49,8 @@ export  class cart extends React.Component {
         
     return (
     
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
+      <ScrollView style={styles.scrollView}>
     
     {this.state.lists.map((current, lists) => (
           <Fragment>
@@ -75,8 +76,8 @@ export  class cart extends React.Component {
                 </TouchableOpacity>
                     
           
-    
-    </View>
+          </ScrollView>
+    </SafeAreaView>
     
          );
 };
@@ -85,8 +86,12 @@ export  class cart extends React.Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1, 
-        backgroundColor: '#fff',
+        paddingTop: 0
         
+        
+      },
+      scrollView: {
+        backgroundColor: '#fff',
         
       },
       
@@ -105,8 +110,9 @@ const styles = StyleSheet.create({
           elevation: 10,
           backgroundColor:'#FFFFFF',
           borderRadius: 10,
-          height:'30%',
-          width: '95%',
+          
+          height:200,
+          
     },
       txt:{
           

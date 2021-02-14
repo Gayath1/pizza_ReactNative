@@ -4,6 +4,8 @@ import firebase from '../database/firebase';
 
 
 export default class orderplace extends React.Component {
+
+  //add componentDidUpdate for realtime update status
   
   state = {
       name:'',

@@ -106,6 +106,7 @@ const styles = StyleSheet.create({
         card:{
           flex: 1, 
           margin:10,
+          
           justifyContent: "center",
           shadowColor: '#000',
           shadowOffset: { width: 0, height: 3 },
@@ -115,7 +116,7 @@ const styles = StyleSheet.create({
           backgroundColor:'#FFFFFF',
           borderRadius: 10,
           height:'30%',
-          width: '95%',
+          
     },
       txt:{
           
@@ -129,7 +130,7 @@ const styles = StyleSheet.create({
     },
      img:{
       
-      
+      marginTop:20,
        resizeMode: "center",
        height:'40%',
        width:'100%'
@@ -142,9 +143,10 @@ const styles = StyleSheet.create({
       elevation: 10,
       backgroundColor:'#FFFFFF',
       borderRadius: 5,
-      margin:20,
-      
-      
+      marginTop:20,
+      marginLeft:20,
+      marginRight:20,
+      marginBottom:0,
   },
     txtbtn:{
       textAlignVertical: 'center',
