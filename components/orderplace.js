@@ -30,7 +30,9 @@ export default class orderplace extends React.Component {
       firebase.database().ref('/order/' + firebase.auth().currentUser.uid).push(
         
          this.props.route.params.lists,
-        
+         this.state.name,
+         this.state.address,
+         this.state.mobile,
       )
       firebase.database().ref('/cart/' + firebase.auth().currentUser.uid).remove()
       
