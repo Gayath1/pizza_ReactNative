@@ -18,10 +18,10 @@ export  class orders extends React.Component{
         })
     }
 
-    details = (id) => {
-      
-      this.props.navigation.navigate('details', {id: id})
-    }
+   
+    orderdetails = (lists,name) => {
+      this.props.navigation.navigate('orderdetails', {lists: lists,name:name})
+ }
 
   render() {
      
@@ -41,7 +41,7 @@ export  class orders extends React.Component{
            {current.list.map((current, i) => (
            <Fragment>
            
-            <TouchableOpacity style={styles.card}>
+            <TouchableOpacity style={styles.card} onPress={() =>this.orderdetails(current.lists[0],current.name)}>
                 <Image style={styles.img} key={i} source={{uri: current.lists[0].imageUrl}}/>
                 <Text  style={styles.txt} key={i}>{current.lists[0].name}</Text>
                 <Text  style={styles.txt} key={i}>{current.lists[0].size}</Text>
