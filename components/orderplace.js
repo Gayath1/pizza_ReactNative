@@ -11,7 +11,7 @@ export default class orderplace extends React.Component {
       name:'',
       address:'',
       mobile:'',
-      lists: this.props.route.params.lists
+      //lists: this.props.route.params.lists
   }
 
   updateInputVal = (val, prop) => {
@@ -27,11 +27,11 @@ export default class orderplace extends React.Component {
       this.setState({
         isLoading: true,
       })
-      firebase.database().ref('/order/' + firebase.auth().currentUser.uid).push({
+      firebase.database().ref('/order/' + firebase.auth().currentUser.uid).push(
         
-        lists: this.state.lists,
+         this.props.route.params.lists,
         
-      })
+      )
       firebase.database().ref('/cart/' + firebase.auth().currentUser.uid).remove()
       
       .then((res) => {
@@ -50,10 +50,10 @@ export default class orderplace extends React.Component {
     }
   }
   
-  totalPrice = this.state.lists.reduce((a, c) => a + c.lists[0].price, 0);
+  totalPrice = this.props.route.params.lists.reduce((a, c) => a + c.lists[0].price, 0);
   
   render() {
-    console.log(this.state.lists)
+    console.log(this.props.route.params.lists)
     if(this.state.isLoading){
       return(
         <View style={styles.preloader}>

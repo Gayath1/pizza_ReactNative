@@ -45,7 +45,7 @@ export  class cart extends React.Component {
    }
         
     render(){
-        
+      console.log(this.state.lists)
         
     return (
     
