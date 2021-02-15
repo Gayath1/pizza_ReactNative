@@ -27,13 +27,13 @@ export default class orderplace extends React.Component {
       this.setState({
         isLoading: true,
       })
-      firebase.database().ref('/order/' + firebase.auth().currentUser.uid).push(
+      firebase.database().ref('/order/' + firebase.auth().currentUser.uid).push({
         
-         this.props.route.params.lists,
-         this.state.name,
-         this.state.address,
-         this.state.mobile,
-      )
+         list:this.props.route.params.lists,
+         name:this.state.name,
+         address:this.state.address,
+         mobile:this.state.mobile,
+      })
       firebase.database().ref('/cart/' + firebase.auth().currentUser.uid).remove()
       
       .then((res) => {

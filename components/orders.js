@@ -38,10 +38,10 @@ export  class orders extends React.Component{
           {this.state.lists.map((current, i) => (
             
            <View>
-           {current.map((current, i) => (
+           {current.list.map((current, i) => (
            <Fragment>
            
-            <TouchableOpacity style={styles.card}  onPress={() => this.details(current.id)}>
+            <TouchableOpacity style={styles.card}>
                 <Image style={styles.img} key={i} source={{uri: current.lists[0].imageUrl}}/>
                 <Text  style={styles.txt} key={i}>{current.lists[0].name}</Text>
                 <Text  style={styles.txt} key={i}>{current.lists[0].size}</Text>
