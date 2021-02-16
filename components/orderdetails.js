@@ -50,7 +50,7 @@ export default class orderdetails extends React.Component {
          {this.state.status.map((current, i) => ( 
           <View style={{flex: 1}}>
           
-          <ProgressSteps activeStep={2}>
+          <ProgressSteps activeStep={current.status}>
         <ProgressStep label="Order confirmed" removeBtnRow={true}>
             
         </ProgressStep>
