@@ -68,9 +68,7 @@ export default class orderdetails extends React.Component {
           
         
         
-      <Text style={styles.loginText}>
-          Status: {current.status}
-        </Text> 
+      
         <Text style={styles.loginText}>
           Name: {current.name}
         </Text>
