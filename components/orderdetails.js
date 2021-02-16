@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, Alert, ActivityIndicator, TouchableOpacity,Image } from 'react-native';
 import firebase from '../database/firebase';
+import { ProgressSteps, ProgressStep } from 'react-native-progress-steps';
+
 
 
 export default class orderdetails extends React.Component {
@@ -12,7 +14,8 @@ export default class orderdetails extends React.Component {
       address:'',
       mobile:'',
       lists: this.props.route.params.lists,
-      status:[]
+      status:[],
+      
   }
 
  
@@ -30,7 +33,8 @@ export default class orderdetails extends React.Component {
         
     })
   }
- 
+
+  
   
   render() {
     
@@ -44,7 +48,28 @@ export default class orderdetails extends React.Component {
     return (
         <View style={styles.container}>
          {this.state.status.map((current, i) => ( 
-        <View>
+          <View style={{flex: 1}}>
+          
+          <ProgressSteps activeStep={2}>
+        <ProgressStep label="Order confirmed" removeBtnRow={true}>
+            <View style={{ alignItems: 'center' }}>
+                <Text>This is the content within step 1!</Text>
+            </View>
+        </ProgressStep>
+        <ProgressStep label="Prepareing" removeBtnRow={true}>
+            <View style={{ alignItems: 'center' }}>
+                <Text>This is the content within step 2!</Text>
+            </View>
+        </ProgressStep>
+        <ProgressStep label="Out for delivery" removeBtnRow={true}>
+            <View style={{ alignItems: 'center' }}>
+                <Text>This is the content within step 3!</Text>
+            </View>
+        </ProgressStep>
+    </ProgressSteps>
+         
+          
+        
         
       <Text style={styles.loginText}>
           Status: {current.status}
@@ -60,6 +85,7 @@ export default class orderdetails extends React.Component {
         </Text>
                              
       </View>
+       
       ))}  
       </View>
     );
@@ -75,6 +101,7 @@ const styles = StyleSheet.create({
     padding: 35,
     backgroundColor: '#fff'
   },
+  
   inputStyle: {
     width: '100%',
     marginBottom: 15,
