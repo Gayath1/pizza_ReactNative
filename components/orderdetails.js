@@ -52,19 +52,16 @@ export default class orderdetails extends React.Component {
           
           <ProgressSteps activeStep={2}>
         <ProgressStep label="Order confirmed" removeBtnRow={true}>
-            <View style={{ alignItems: 'center' }}>
-                <Text>This is the content within step 1!</Text>
-            </View>
+            
         </ProgressStep>
-        <ProgressStep label="Prepareing" removeBtnRow={true}>
-            <View style={{ alignItems: 'center' }}>
-                <Text>This is the content within step 2!</Text>
-            </View>
+        <ProgressStep label="Preparing foods" removeBtnRow={true}>
+            
         </ProgressStep>
         <ProgressStep label="Out for delivery" removeBtnRow={true}>
-            <View style={{ alignItems: 'center' }}>
-                <Text>This is the content within step 3!</Text>
-            </View>
+            
+        </ProgressStep>
+        <ProgressStep label="Delivered" removeBtnRow={true}>
+            
         </ProgressStep>
     </ProgressSteps>
          
