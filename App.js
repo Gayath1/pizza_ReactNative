@@ -5,7 +5,7 @@ import {StyleSheet, Text, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
+import { BreadProvider } from "material-bread";
 import Home from './components/Home';
 import Login from './components/Login';
 import Sign from './components/Sign';
@@ -31,7 +31,7 @@ export default function App() {
   return (
 
     
-
+<BreadProvider>
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Home" component={Home} />
@@ -47,6 +47,6 @@ export default function App() {
       </Stack.Navigator>
 
     </NavigationContainer>
-    
+    </BreadProvider>
   );
 }

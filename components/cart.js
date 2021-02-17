@@ -3,6 +3,7 @@ import {StyleSheet, Text, View, Image,Button,SafeAreaView,StatusBar, TouchableOp
 import * as Font from 'expo-font';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { BottomNavigation, BottomNavigationItem } from 'material-bread';
 import firebase from '../database/firebase';
 
 
@@ -77,6 +78,19 @@ export  class cart extends React.Component {
                     
           
           </ScrollView>
+          <BottomNavigation 
+            style={{ maxWidth: 672, width: '100%' }}
+            showLabels
+            backgroundColor={'white'}
+            value={this.state.value}
+            handleChange={(value) => this.handleChange(value)}
+            actionItems={[
+                {icon: 'home', label: 'Home'},
+                {icon: 'favorite', label: 'Favorite'},
+                {icon: 'info', label: 'Info'},
+                <BottomNavigationItem icon={'settings'} label={'Settings'} />, 
+            ]}
+        />
     </SafeAreaView>
     
          );
