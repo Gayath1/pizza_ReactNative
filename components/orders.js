@@ -60,10 +60,10 @@ export  class orders extends React.Component{
             
             
             actionItems={[
-              <BottomNavigationItem icon={'settings'} label={'Store'} onPress={() => this.props.navigation.navigate('store')} />,
-              <BottomNavigationItem icon={'settings'} label={'Cart'} onPress={() => this.props.navigation.navigate('cart')} />,
-              <BottomNavigationItem icon={'settings'} label={'Orders'} onPress={() => this.props.navigation.navigate('orders')} />,
-              <BottomNavigationItem icon={'settings'} label={'Profile'} onPress={() => this.props.navigation.navigate('Dashboard')}/>, 
+              <BottomNavigationItem icon={'home'} label={'Store'} onPress={() => this.props.navigation.navigate('store')} />,
+              <BottomNavigationItem icon={'shopping-cart'} label={'Cart'} onPress={() => this.props.navigation.navigate('cart')} />,
+              <BottomNavigationItem icon={'reorder'} label={'Orders'} onPress={() => this.props.navigation.navigate('orders')} />,
+              <BottomNavigationItem icon={'face'} label={'Profile'} onPress={() => this.props.navigation.navigate('Dashboard')}/>, 
             ]}
         />                
       </SafeAreaView>
