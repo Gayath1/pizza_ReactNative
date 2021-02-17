@@ -82,12 +82,12 @@ export  class cart extends React.Component {
             style={{ maxWidth: 672, width: '100%' }}
             showLabels
             backgroundColor={'white'}
-            value={this.state.value}
-            handleChange={(value) => this.handleChange(value)}
+            
+            
             actionItems={[
-              <BottomNavigationItem icon={'settings'} label={'Store'} />,
-              <BottomNavigationItem icon={'settings'} label={'Cart'} />,
-              <BottomNavigationItem icon={'settings'} label={'Orders'} />,
+              <BottomNavigationItem icon={'settings'} label={'Store'} onPress={() => this.props.navigation.navigate('store')} />,
+              <BottomNavigationItem icon={'settings'} label={'Cart'} onPress={() => this.props.navigation.navigate('cart')} />,
+              <BottomNavigationItem icon={'settings'} label={'Orders'} onPress={() => this.props.navigation.navigate('orders')} />,
               <BottomNavigationItem icon={'settings'} label={'Profile'} onPress={() => this.props.navigation.navigate('Dashboard')}/>, 
             ]}
         />
