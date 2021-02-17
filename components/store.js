@@ -124,8 +124,11 @@ const styles = StyleSheet.create({
       
 },
 tab1:{
-  padding:15,
-  fontSize:15
+  textAlignVertical: 'center',
+    textAlign:'center',
+  fontSize:15,
+  height:40,
+  
 },
   txt:{
       
@@ -152,7 +155,7 @@ tab1:{
   elevation: 10,
   backgroundColor:'#FFFFFF',
   borderRadius: 5,
-  margin:5
-  
+  margin:5,
+  width:80
 },
 });
