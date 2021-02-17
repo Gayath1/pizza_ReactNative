@@ -4,6 +4,8 @@ import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
 import Home from './components/Home';
 import Login from './components/Login';
 import Sign from './components/Sign';
@@ -17,8 +19,19 @@ import orderdetails from './components/orderdetails';
 
 const Stack = createStackNavigator();
 
+
+
 export default function App() {
+
+  componentDidMount =() =>{
+    firebase.auth().onAuthStateChanged(user => {
+        user ? this.props.navigation.navigate("Dashboard") : this.props.navigation.navigate("Login");
+    });
+  };
   return (
+
+    
+
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name="Home" component={Home} />
@@ -32,6 +45,8 @@ export default function App() {
         <Stack.Screen name="orders" component={orders} />
         <Stack.Screen name="orderdetails" component={orderdetails} />
       </Stack.Navigator>
+
     </NavigationContainer>
+    
   );
 }

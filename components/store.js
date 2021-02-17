@@ -1,6 +1,9 @@
 import React, { Component, useState, useEffect, Fragment } from 'react';
 import { StyleSheet, View, Text, Button, TouchableOpacity, Image,SafeAreaView,ScrollView, FlatList } from 'react-native';
 import firebase from '../database/firebase';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import {NavigationContainer} from '@react-navigation/native';
+
 
 
 export default class store extends React.Component {
@@ -44,10 +47,29 @@ export default class store extends React.Component {
             </TouchableOpacity>
            </Fragment>
                     ))}
-                                   
-      </ScrollView>                   
-      </SafeAreaView>
+                                           
+      </ScrollView>  
       
+      <View style={styles.tab}>
+      <TouchableOpacity style={styles.btn1}>
+      <Text style={styles.tab1} size={24} color="black" onPress={() => this.props.navigation.navigate('store')} >Store</Text></TouchableOpacity>
+      <TouchableOpacity style={styles.btn1}>
+      <Text style={styles.tab1} size={24} color="black" onPress={() => this.props.navigation.navigate('cart')} >Cart</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.btn1}>
+      <Text style={styles.tab1} size={24} color="black" onPress={() => this.props.navigation.navigate('orders')} >Orders</Text>
+      </TouchableOpacity>
+      <TouchableOpacity style={styles.btn1}>
+      <Text style={styles.tab1} size={24} color="black" onPress={() => this.props.navigation.navigate('Dashboard')} >Profile</Text>
+      </TouchableOpacity>
+      
+      
+      
+      </View> 
+          
+      </SafeAreaView>
+
+  
     );
   
   }
@@ -86,6 +108,25 @@ const styles = StyleSheet.create({
       height:200,
       
 },
+
+    tab:{
+      
+      flexDirection:'row',
+      justifyContent: "center",
+      shadowColor: '#dddddd',
+      shadowOffset: { width: 0, height: -15 },
+      shadowOpacity: 0.58,
+      shadowRadius: 16.00,  
+      elevation: 50,
+      backgroundColor:'#FFFFFF',
+      
+      height:50,
+      
+},
+tab1:{
+  padding:15,
+  fontSize:15
+},
   txt:{
       
       textAlign:'center',
@@ -102,5 +143,16 @@ const styles = StyleSheet.create({
    resizeMode: "center",
    height:'40%',
    width:'100%'
- }
+ },
+ btn1:{
+  shadowColor: '#000',
+  shadowOffset: { width: 0, height: 3 },
+  shadowOpacity: 0.29,
+  shadowRadius: 4.65,  
+  elevation: 10,
+  backgroundColor:'#FFFFFF',
+  borderRadius: 5,
+  margin:5
+  
+},
 });
