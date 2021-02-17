@@ -1,7 +1,7 @@
 import React, { Component, useState, useEffect, Fragment } from 'react';
 import { StyleSheet, View, Text, Button, TouchableOpacity, Image,SafeAreaView,ScrollView, FlatList } from 'react-native';
 import firebase from '../database/firebase';
-
+import { BottomNavigation, BottomNavigationItem } from 'material-bread';
 
 export  class orders extends React.Component{
   state={
@@ -52,7 +52,20 @@ export  class orders extends React.Component{
            </View> 
            ))}   
                                    
-      </ScrollView>                   
+      </ScrollView>   
+      <BottomNavigation 
+            style={{ maxWidth: 672, width: '100%' }}
+            showLabels
+            backgroundColor={'white'}
+            
+            
+            actionItems={[
+              <BottomNavigationItem icon={'settings'} label={'Store'} onPress={() => this.props.navigation.navigate('store')} />,
+              <BottomNavigationItem icon={'settings'} label={'Cart'} onPress={() => this.props.navigation.navigate('cart')} />,
+              <BottomNavigationItem icon={'settings'} label={'Orders'} onPress={() => this.props.navigation.navigate('orders')} />,
+              <BottomNavigationItem icon={'settings'} label={'Profile'} onPress={() => this.props.navigation.navigate('Dashboard')}/>, 
+            ]}
+        />                
       </SafeAreaView>
       
     );

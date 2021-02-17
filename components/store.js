@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, Button, TouchableOpacity, Image,SafeAreaView,Sc
 import firebase from '../database/firebase';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
-
+import { BottomNavigation, BottomNavigationItem } from 'material-bread';
 
 
 export default class store extends React.Component {
@@ -50,22 +50,19 @@ export default class store extends React.Component {
                                            
       </ScrollView>  
       
-      <View style={styles.tab}>
-      <TouchableOpacity style={styles.btn1}>
-      <Text style={styles.tab1} size={24} color="black" onPress={() => this.props.navigation.navigate('store')} >Store</Text></TouchableOpacity>
-      <TouchableOpacity style={styles.btn1}>
-      <Text style={styles.tab1} size={24} color="black" onPress={() => this.props.navigation.navigate('cart')} >Cart</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.btn1}>
-      <Text style={styles.tab1} size={24} color="black" onPress={() => this.props.navigation.navigate('orders')} >Orders</Text>
-      </TouchableOpacity>
-      <TouchableOpacity style={styles.btn1}>
-      <Text style={styles.tab1} size={24} color="black" onPress={() => this.props.navigation.navigate('Dashboard')} >Profile</Text>
-      </TouchableOpacity>
-      
-      
-      
-      </View> 
+      <BottomNavigation 
+            style={{ maxWidth: 672, width: '100%' }}
+            showLabels
+            backgroundColor={'white'}
+            
+            
+            actionItems={[
+              <BottomNavigationItem icon={'settings'} label={'Store'} onPress={() => this.props.navigation.navigate('store')} />,
+              <BottomNavigationItem icon={'settings'} label={'Cart'} onPress={() => this.props.navigation.navigate('cart')} />,
+              <BottomNavigationItem icon={'settings'} label={'Orders'} onPress={() => this.props.navigation.navigate('orders')} />,
+              <BottomNavigationItem icon={'settings'} label={'Profile'} onPress={() => this.props.navigation.navigate('Dashboard')}/>, 
+            ]}
+        /> 
           
       </SafeAreaView>
 
