@@ -85,10 +85,10 @@ export  class cart extends React.Component {
             value={this.state.value}
             handleChange={(value) => this.handleChange(value)}
             actionItems={[
-                {icon: 'home', label: 'Home'},
-                {icon: 'favorite', label: 'Favorite'},
-                {icon: 'info', label: 'Info'},
-                <BottomNavigationItem icon={'settings'} label={'Settings'} />, 
+              <BottomNavigationItem icon={'settings'} label={'Store'} />,
+              <BottomNavigationItem icon={'settings'} label={'Cart'} />,
+              <BottomNavigationItem icon={'settings'} label={'Orders'} />,
+              <BottomNavigationItem icon={'settings'} label={'Profile'} onPress={() => this.props.navigation.navigate('Dashboard')}/>, 
             ]}
         />
     </SafeAreaView>
