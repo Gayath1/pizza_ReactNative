@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
         flex: 1,
         
         
-        backgroundColor: '#fff',
+        backgroundColor: '#e8e8e8',
         
       },
       textStyle: {
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
           
           textAlign:'center',
           textAlignVertical:'center',
-          color: '#000000',
+          color: '#495464',
           borderRadius:10,
           fontSize:20,
           fontWeight: 'bold'
@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
     txtbtn:{
       textAlignVertical: 'center',
       textAlign:'center',
-      color: '#000000',
+      color: '#495464',
       borderRadius:10,
       fontSize:20,
       fontWeight: 'bold',
@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
       shadowOpacity: 0.29,
       shadowRadius: 4.65,  
       elevation: 10,
-      backgroundColor:'#16c79a',
+      backgroundColor:'#f4f4f2',
       borderRadius: 5,
       margin:20,
     

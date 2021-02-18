@@ -79,10 +79,12 @@ export default class orderplace extends React.Component {
           placeholder="Address"
           value={this.state.address}
           onChangeText={(val) => this.updateInputVal(val, 'address')}
-          maxLength={20}
+          maxLength={10}
           
         />   
         <TextInput
+          autoCompleteType={"tel"}
+          keyboardType={'numeric'}
           style={styles.inputStyle}
           placeholder="mobile"
           value={this.state.mobile}
@@ -111,7 +113,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     justifyContent: "center",
     padding: 35,
-    backgroundColor: '#fff'
+    backgroundColor: '#e8e8e8'
   },
   inputStyle: {
     width: '100%',
@@ -122,7 +124,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1
   },
   loginText: {
-    color: '#3740FE',
+    color: '#495464',
     marginTop: 25,
     textAlign: 'center',
     fontSize: 30,
@@ -152,7 +154,7 @@ const styles = StyleSheet.create({
   txtbtn:{
     textAlignVertical: 'center',
     textAlign:'center',
-    color: '#000000',
+    color: '#495464',
     borderRadius:10,
     fontSize:20,
     fontWeight: 'bold',

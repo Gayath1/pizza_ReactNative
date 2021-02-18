@@ -93,8 +93,8 @@ const styles = StyleSheet.create({
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    padding: 35,
-    backgroundColor: '#fff'
+    padding: 20,
+    backgroundColor: '#e8e8e8'
   },
   
   inputStyle: {
@@ -106,8 +106,9 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1
   },
   loginText: {
-    color: '#3740FE',
-    marginTop: 25,
+    color: '#495464',
+    fontFamily:'Helvetica',
+    marginBottom: 50,
     textAlign: 'center',
     fontSize: 30,
   },
