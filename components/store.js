@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
   scrollView: {
     
     
-    backgroundColor: '#f8f1f1',
+    backgroundColor: '#e8e8e8',
     padding: 0,
   },
   textStyle: {
