@@ -61,11 +61,13 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 35,
-    backgroundColor: '#fff'
+    backgroundColor: '#e8e8e8'
   },
   textStyle: {
-    fontSize: 15,
-    marginBottom: 20
+    fontSize: 30,
+    marginBottom: 20,
+    color:'#495464'
+
   },
     btn1:{
       shadowColor: '#000',
@@ -73,7 +75,7 @@ const styles = StyleSheet.create({
       shadowOpacity: 0.29,
       shadowRadius: 4.65,  
       elevation: 10,
-      backgroundColor:'#FFFFFF',
+      backgroundColor:'#bbbfca',
       borderRadius: 10,
       marginTop:20,
       marginBottom:40
@@ -83,7 +85,7 @@ const styles = StyleSheet.create({
       textAlign:'center',
       padding:10,
       margin:5,
-      color: '#000000',
+      color: '#495464',
       borderRadius:10,
       width: 120,
       height: 50,
