@@ -8,8 +8,11 @@ export  class orders extends React.Component{
     uid:firebase.auth().currentUser.uid,
     displayName: firebase.auth().currentUser.displayName,
     lists:[],
+    value:0
   }
+  
     componentDidMount(){
+      
         const recentPostsRef = firebase.database().ref('/order/' + firebase.auth().currentUser.uid);
         recentPostsRef.once('value').then(snapshot => {
           console.log((Object.keys(snapshot.val())))
@@ -17,8 +20,9 @@ export  class orders extends React.Component{
             
         })
     }
-
    
+   
+
     orderdetails = (lists,name) => {
       this.props.navigation.navigate('orderdetails', {lists: lists,name:name})
  }
@@ -56,14 +60,17 @@ export  class orders extends React.Component{
       <BottomNavigation 
             style={{ maxWidth: 672, width: '100%' }}
             showLabels
-            backgroundColor={'white'}
+            backgroundColor={'#673AB7'}
+            value={this.state.value}
+            
+            handleChange={(value) => this.setState({value:value})}
             
             
             actionItems={[
               <BottomNavigationItem icon={'home'} label={'Store'} onPress={() => this.props.navigation.navigate('store')} />,
               <BottomNavigationItem icon={'shopping-cart'} label={'Cart'} onPress={() => this.props.navigation.navigate('cart')} />,
-              <BottomNavigationItem icon={'reorder'} label={'Orders'} onPress={() => this.props.navigation.navigate('orders')} />,
-              <BottomNavigationItem icon={'face'} label={'Profile'} onPress={() => this.props.navigation.navigate('Dashboard')}/>, 
+              <BottomNavigationItem icon={'favorite'} label={'Orders'} onPress={() => this.props.navigation.navigate('orders')} />,
+              <BottomNavigationItem icon={'settings'} label={'Profile'} onPress={() => this.props.navigation.navigate('Dashboard')}/>, 
             ]}
         />                
       </SafeAreaView>

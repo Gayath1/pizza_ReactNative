@@ -15,7 +15,8 @@ export  class cart extends React.Component {
         displayName: firebase.auth().currentUser.displayName, 
         lists:[],
         flashMessage: false,
-        randomid:''
+        randomid:'',
+        value:0
       }
       
     
@@ -28,6 +29,8 @@ export  class cart extends React.Component {
                 
             })
         }
+
+        
 
         remove = (id) => {
             
@@ -81,13 +84,16 @@ export  class cart extends React.Component {
           <BottomNavigation 
             style={{ maxWidth: 672, width: '100%' }}
             showLabels
-            backgroundColor={'white'}
+            backgroundColor={'#673AB7'}
+            value={this.state.value}
+            
+            handleChange={(value) => this.setState({value:value})}
             
             
             actionItems={[
-              <BottomNavigationItem icon={'settings'} label={'Store'} onPress={() => this.props.navigation.navigate('store')} />,
-              <BottomNavigationItem icon={'settings'} label={'Cart'} onPress={() => this.props.navigation.navigate('cart')} />,
-              <BottomNavigationItem icon={'settings'} label={'Orders'} onPress={() => this.props.navigation.navigate('orders')} />,
+              <BottomNavigationItem icon={'home'} label={'Store'} onPress={() => this.props.navigation.navigate('store')} />,
+              <BottomNavigationItem icon={'shopping-cart'} label={'Cart'} onPress={() => this.props.navigation.navigate('cart')} />,
+              <BottomNavigationItem icon={'favorite'} label={'Orders'} onPress={() => this.props.navigation.navigate('orders')} />,
               <BottomNavigationItem icon={'settings'} label={'Profile'} onPress={() => this.props.navigation.navigate('Dashboard')}/>, 
             ]}
         />

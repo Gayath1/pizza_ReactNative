@@ -10,7 +10,8 @@ export default class store extends React.Component {
   state={
     uid:firebase.auth().currentUser.uid,
     displayName: firebase.auth().currentUser.displayName,
-    lists:[]
+    lists:[],
+    value:0
   }
     componentDidMount(){
         const recentPostsRef = firebase.database().ref('/store');
@@ -19,6 +20,8 @@ export default class store extends React.Component {
             
         })
     }
+
+    
 
     details = (id) => {
       
@@ -53,13 +56,14 @@ export default class store extends React.Component {
       <BottomNavigation 
             style={{ maxWidth: 672, width: '100%' }}
             showLabels
-            backgroundColor={'white'}
+            backgroundColor={'#673AB7'}
+            value={this.state.value}
             
-            
+            handleChange={(value) => this.setState({value})}
             actionItems={[
-              <BottomNavigationItem icon={'settings'} label={'Store'} onPress={() => this.props.navigation.navigate('store')} />,
-              <BottomNavigationItem icon={'settings'} label={'Cart'} onPress={() => this.props.navigation.navigate('cart')} />,
-              <BottomNavigationItem icon={'settings'} label={'Orders'} onPress={() => this.props.navigation.navigate('orders')} />,
+              <BottomNavigationItem icon={'home'} label={'Store'} onPress={() => this.props.navigation.navigate('store')} />,
+              <BottomNavigationItem icon={'shopping-cart'} label={'Cart'} onPress={() => this.props.navigation.navigate('cart')} />,
+              <BottomNavigationItem icon={'favorite'} label={'Orders'} onPress={() => this.props.navigation.navigate('orders')} />,
               <BottomNavigationItem icon={'settings'} label={'Profile'} onPress={() => this.props.navigation.navigate('Dashboard')}/>, 
             ]}
         /> 
