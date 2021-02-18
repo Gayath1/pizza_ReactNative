@@ -60,7 +60,7 @@ export  class orders extends React.Component{
       <BottomNavigation 
             style={{ maxWidth: 672, width: '100%' }}
             showLabels
-            backgroundColor={'#673AB7'}
+            backgroundColor={'#c1a1d3'}
             value={this.state.value}
             
             handleChange={(value) => this.setState({value:value})}
@@ -92,7 +92,7 @@ const styles = StyleSheet.create({
   scrollView: {
     
     
-    backgroundColor: '#fff',
+    backgroundColor: '#e8e8e8',
     padding: 0,
   },
   textStyle: {
@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
       
       textAlign:'center',
       textAlignVertical:'center',
-      color: '#000000',
+      color: '#495464',
       borderRadius:10,
       fontSize:20,
       fontWeight: 'bold'
