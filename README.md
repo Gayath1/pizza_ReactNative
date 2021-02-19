@@ -1,5 +1,6 @@
 # React Native Pizza ordering App(Pizza Mania)
 
+
 ![](https://github.com/Gayath1/pizza_ReactNative/blob/master/UI%20SS/Android%20Emulator%20-%20Pixel_2_API_30_5554%202_19_2021%2010_46_31%20AM.png)
 
 ![](https://github.com/Gayath1/pizza_ReactNative/blob/master/UI%20SS/Android%20Emulator%20-%20Pixel_2_API_30_5554%202_19_2021%2010_46_56%20AM.png)
